@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function JobForm ({jobs, setJobs}) {
     const [status, setStatus] = useState(false);
@@ -15,10 +15,8 @@ export default function JobForm ({jobs, setJobs}) {
         };
 
         if(e.target.name == 'status'){
-            console.log(e.target.checked)
             setters[e.target.name]?.(e.target.checked);
         } else {
-            console.log(e.target.value)
             setters[e.target.name]?.(e.target.value); 
         }
     }
@@ -35,7 +33,7 @@ export default function JobForm ({jobs, setJobs}) {
     }
 
     return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
         <label>Status</label>{" "}
         <input checked={status} type="checkbox" name="status" id="status" onChange={handleChange} />{" "}
         <label htmlFor='company'>Company</label>{" "}
